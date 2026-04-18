@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_tm_123/Screens/home_page.dart';
 
 class AddCash extends StatefulWidget {
   
@@ -80,11 +81,13 @@ class _AddCashState extends State<AddCash> {
 
 
           ElevatedButton(onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
 
             
           }, child: Text(
             "Add",
-          ))
+          )),
+          
 
 
 

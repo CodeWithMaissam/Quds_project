@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:my_tm_123/Screens/home_page.dart';
 
 class RemoveCash extends StatefulWidget {
   
@@ -81,6 +82,7 @@ class _RemoveCashState extends State<RemoveCash> {
 
 
           ElevatedButton(onPressed: () {
+             Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
 
             
           }, child: Text(

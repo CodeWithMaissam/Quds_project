@@ -1,15 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:my_tm_123/Screens/home_page.dart';
+// import 'package:cloud_firestore/cloud_firestore';
 import 'auth.dart';
 
-class LoginPage extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
-  }
+// void main(){
+//   runApp(const loginApp());
+// }
+// class loginApp extends StatelessWidget {
+//   const loginApp({Key? key}):super(key: key);
 
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Login',
+//       home: LoginPage(),
+//       );
+//   }
+// }
+
+
+
+
+
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}):super(key: key);
+
+   @override
+  State<LoginPage> createState() => _LoginPageState();
 }
   // String? errorMessage = '';
   // bool isLogin = true;
@@ -33,8 +51,6 @@ class LoginPage extends StatefulWidget {
   // }
   // // const LoginPage({super.key});
 
-  @override
-  State<LoginPage> createState() => _LoginPageState();
 
   
   class _LoginPageState extends State<LoginPage> {
@@ -54,8 +70,12 @@ class LoginPage extends StatefulWidget {
     final username = _userNameController.text;
     final password = _passwordController.text;
   
-   if(_isValidCredentials(username, password)){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+   if(
+    _isValidCredentials(username, password)
+    ){
+    Navigator.push(
+      context, 
+    MaterialPageRoute(builder: (context) => HomePage()));
 
   } else {
     ScaffoldMessenger.of(context).showSnackBar(
@@ -72,6 +92,49 @@ class LoginPage extends StatefulWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Login Page'),
+      ),
+      body: Padding(padding: const EdgeInsetsGeometry.all(16),
+      child: Form(
+        key: _formKey,
+        child: Column(
+          children: [
+            TextFormField(
+              controller: _userNameController,
+              decoration: const InputDecoration(
+                labelText: 'Username',
+                // border: OutlineInputBorder(),
+              ),
+              validator: (value){
+                if(value!.isEmpty){
+                  return 'Please enter your username';
+                }
+                return null;
+              },
+            ),
+            const SizedBox(height: 16,),
+            TextFormField(
+              controller: _passwordController,
+              obscureText: true,
+              decoration: const InputDecoration(
+                labelText: 'Password',
+                border: OutlineInputBorder(),
+              ),
+              validator: (value){
+                if(value!.isEmpty){
+                  return 'Please enter your password';
+                }
+                return null;
+              },
+            ),
+            const SizedBox(height: 16,),
+            ElevatedButton(onPressed: _login, child: const Text('Login')),
+          ],
+        ),
+      ),
+      ),
+    );
   }
 }

@@ -1,6 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:my_tm_123/Screens/home_page.dart';
+import 'package:my_tm_123/Screens/login/login.dart';
 import 'package:my_tm_123/Widgets/home_income.dart';
+import 'package:my_tm_123/auth/login_page.dart';
+import 'package:my_tm_123/category/category.dart';
 import 'package:my_tm_123/firebase_options.dart';
 
 void main() async{
@@ -18,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Personal Budget Tracker',
-      home: HomeIncome(),
+      home: LogIn(),
       );
       
     

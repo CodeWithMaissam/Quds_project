@@ -1,14 +1,15 @@
+
 import 'package:flutter/material.dart';
 
-class AddCash extends StatefulWidget {
+class RemoveCash extends StatefulWidget {
   
-  const AddCash({super.key});
+  const RemoveCash({super.key});
 
   @override
-  State<AddCash> createState() => _AddCashState();
+  State<RemoveCash> createState() => _RemoveCashState();
 }
 
-class _AddCashState extends State<AddCash> {
+class _RemoveCashState extends State<RemoveCash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +17,7 @@ class _AddCashState extends State<AddCash> {
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: Text(
-          "AddCash",
+          "Add Expense",
 
         ),
         centerTitle: true,
@@ -72,7 +73,7 @@ class _AddCashState extends State<AddCash> {
                 ),
                 
                 border: InputBorder.none,
-                hintText: "Add New Amount"
+                hintText: "Add New Expense"
               ),
             ),
           ),
@@ -83,7 +84,7 @@ class _AddCashState extends State<AddCash> {
 
             
           }, child: Text(
-            "Add",
+            "Remove",
           ))
 
 

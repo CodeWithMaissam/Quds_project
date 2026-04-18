@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_tm_123/add&removepage/add_cash.dart';
+import 'package:my_tm_123/add&removepage/remove.dart';
 
 class HomeIncome extends StatefulWidget {
   const HomeIncome({super.key});
@@ -20,59 +22,82 @@ class _HomeIncomeState extends State<HomeIncome> {
       body: Column(
         children: [
           Container(
+            margin: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Colors.green[300],
+              borderRadius: BorderRadius.circular(10)
+            ),
+            
             width: double.infinity,
-            height: 200,
-            color: Colors.red,
-            // padding: EdgeInsets.o(horizontal: 10),
+            height: 150,
+            // color: Colors.red,
+            padding: EdgeInsets.all( 10),
             child: Row(
               children: [
-                Column(
-                  mainAxisAlignment: .spaceBetween,
-                  children: [
-                    Text(
-                      "Maissam",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10.0),
+                  child: Column(
+                    crossAxisAlignment: .start,
+                    
+                    
+                    children: [
+
+                      Text(
+                        "Maissam",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-
-                    Text(
-                      "RS: 50000",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
+                      Spacer(),
+                  
+                      Row(
+                        children: [
+                          Text(
+                            "RS: ",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 28,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                        "50000",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-
-                  ],
+                        ],
+                      ),
+                      
+                  
+                    ],
+                  ),
                 ),
+                Spacer(),
                 Column(
+                  mainAxisAlignment: .end,
+                  crossAxisAlignment: .end,
                   children: [
-                    Container(
-
-            margin: EdgeInsets.symmetric(horizontal: 10),
-            padding: EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(30)
-
-            ),
-            child: TextFormField(
-              decoration: InputDecoration(
-                
-                prefixIcon: Icon(
-                  Icons.password,
-                  color: Colors.black,
-                ),
-                
-                border: InputBorder.none,
-                hintText: "Conform Password"
-              ),
-            ),
-          ),
+                    ElevatedButton(onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => RemoveCash()));
+                      
+                    }, child: Text(
+                      "Add New Expense"
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  ElevatedButton(onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => AddCash()));
+                      
+                    }, child: Text(
+                      "Add Cash"
+                    ),
+                  ),
+          
 
                     
                   ],

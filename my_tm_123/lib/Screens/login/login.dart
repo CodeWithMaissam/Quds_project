@@ -1,62 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:my_tm_123/Screens/home_page.dart';
 import 'package:my_tm_123/Screens/login/signup.dart';
-// import 'package:my_tm_123/Screens/login/signup.dart';
-
-// void main()
-// {
-//    runApp(const LogIn());
-// }
+import 'package:my_tm_123/auth/auth.dart';
 
 class LogIn extends StatefulWidget {
    const LogIn({Key? key}):super(key: key);
-  // final String email;
-  // final String password;
-  // const LogIn({
-  //   super.key,
-  //   // required this.email, 
-  //   // required this.password,
-  //   });
 
   @override
   State<LogIn> createState() => _LogInState();
 }
-// class _LogInState extends State<LogIn> {
+
   
   
 class _LogInState extends State<LogIn> {
   final _formKey = GlobalKey<FormState>();
-  final _userNameController = TextEditingController();
+  final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+    final AuthService _authService = AuthService();
 
-  bool _isValidCredentials(
-    String username,
-    String password,
-  ){
-     return username == 'admin' &&  password == 'password';
+
+
+
+
+void login() async {
+    try {
+      await _authService.loginWithEmail(
+        _emailController.text.trim(),
+        _passwordController.text.trim(),
+      );
+
+
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const HomePage()),
+        );
+      }
+    } catch (e) {
+      // Show error message
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(e.toString())),
+      );
+    }
   }
 
-void _login(
-  // BuildContext context
-  ) {
-    if(_formKey.currentState!.validate()){
-    final username = _userNameController.text;
-    final password = _passwordController.text;
-  
-   if(
-    _isValidCredentials(username, password)
-    ){
-    Navigator.push(
-      context, 
-    MaterialPageRoute(builder: (context) => HomePage()));
 
-  } else {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Invalid username and Password"))
-    );
-  }
-  }
-  }
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,7 +106,7 @@ void _login(
         
               ),
               child: TextFormField(
-                controller: _userNameController,
+                controller: _emailController,
                 decoration: InputDecoration(
                   
                   prefixIcon: Icon(
@@ -201,11 +193,8 @@ void _login(
                 ],
               ),
             ),
-            ElevatedButton(onPressed: _login,
-            // () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
-             //forgot password navigation 
-            // }, 
+            ElevatedButton(onPressed: login,
+           
             child:Text(
                 textAlign: .center,
                       "Sign In",

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 class CustomCard extends StatefulWidget {
-  const CustomCard({super.key});
+  final String Name;
+  const CustomCard({
+  super.key,
+  required this.Name
+  });
 
   @override
   State<CustomCard> createState() => _CustomCardState();
@@ -13,7 +17,7 @@ class _CustomCardState extends State<CustomCard> {
       margin: EdgeInsets.all(10),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Text("Expenses"),
+        child: Text('Name'),
       ),
     );
   }

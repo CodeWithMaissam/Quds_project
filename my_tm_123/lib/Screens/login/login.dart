@@ -15,25 +15,11 @@ class _LogInState extends State<LogIn> {
       body: Column(
         mainAxisAlignment: .center,
         children: [
+          
           Center(
             child: Text(
               
-              "Wellcome",
-              
-              style: TextStyle(
-                fontSize: 40,
-                fontWeight: .bold,
-                color: Colors.black,
-                
-              ),
-            
-            ),
-            
-          ),
-          Center(
-            child: Text(
-              
-              "Please SignUp",
+              "Please Login",
               
               style: TextStyle(
                 fontSize: 40,

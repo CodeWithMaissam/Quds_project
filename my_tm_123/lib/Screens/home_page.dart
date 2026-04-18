@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_tm_123/Screens/expenses.dart';
+// import 'package:my_tm_123/Screens/expenses.dart';
 // import 'package:my_tm_123/Widgets/Custom_card.dart';
-import 'package:my_tm_123/Widgets/Custom_container.dart';
 import 'package:my_tm_123/Widgets/welcome_message.dart';
 
 class HomePage extends StatefulWidget {
@@ -29,8 +28,9 @@ class _HomePageState extends State<HomePage> {
             WelcomeMessage(),
             // Flexible(child: CustomCard()),
             // Flexible(child: CustomCard()),
-            CustomContainer(Amount: 5000, Name: 'Name'),
+            // CustomContainer(Amount: 5000, Name: 'Name'),
             // Expenses(),
+            
           ],
         ),
       ),

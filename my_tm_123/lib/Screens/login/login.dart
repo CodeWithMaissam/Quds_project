@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:my_tm_123/Screens/home_page.dart';
 import 'package:my_tm_123/Screens/login/signup.dart';
+// import 'package:my_tm_123/Screens/login/signup.dart';
+
+// void main()
+// {
+//    runApp(const LogIn());
+// }
 
 class LogIn extends StatefulWidget {
    const LogIn({Key? key}):super(key: key);
@@ -16,6 +22,9 @@ class LogIn extends StatefulWidget {
   State<LogIn> createState() => _LogInState();
 }
 // class _LogInState extends State<LogIn> {
+  
+  
+class _LogInState extends State<LogIn> {
   final _formKey = GlobalKey<FormState>();
   final _userNameController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -24,10 +33,12 @@ class LogIn extends StatefulWidget {
     String username,
     String password,
   ){
-     return username == "admin" &&  password == 'password';
+     return username == 'admin' &&  password == 'password';
   }
 
-void _login() {
+void _login(
+  // BuildContext context
+  ) {
     if(_formKey.currentState!.validate()){
     final username = _userNameController.text;
     final password = _passwordController.text;
@@ -46,7 +57,6 @@ void _login() {
   }
   }
   }
-class _LogInState extends State<LogIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,6 +114,7 @@ class _LogInState extends State<LogIn> {
         
               ),
               child: TextFormField(
+                controller: _userNameController,
                 decoration: InputDecoration(
                   
                   prefixIcon: Icon(
@@ -139,6 +150,7 @@ class _LogInState extends State<LogIn> {
         
               ),
               child: TextFormField(
+                controller: _passwordController,
                 decoration: InputDecoration(
                   
                   prefixIcon: Icon(
@@ -189,9 +201,11 @@ class _LogInState extends State<LogIn> {
                 ],
               ),
             ),
-            ElevatedButton(onPressed: () {
+            ElevatedButton(onPressed: _login,
+            // () {
+              // Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
              //forgot password navigation 
-            }, 
+            // }, 
             child:Text(
                 textAlign: .center,
                       "Sign In",
@@ -213,12 +227,12 @@ class _LogInState extends State<LogIn> {
                   Text(
                     "Create New Account",
                   ),
-                  TextButton(onPressed: _login,
-                  // () 
-                  // {
-                  //   Navigator.push(context, MaterialPageRoute(builder: (context) => Signup()));
+                  TextButton(onPressed: 
+                  () 
+                  {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Signup()));
                     
-                  // },
+                  },
                    child: Text(
                     "SignUp",
                   ),

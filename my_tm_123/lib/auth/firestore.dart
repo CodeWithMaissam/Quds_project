@@ -94,12 +94,7 @@ class _HomePageState extends State {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.green[100],
-      appBar: AppBar(
-        backgroundColor: Colors.green,
-        title: Text('Expense List'),
-        centerTitle: true,
-      ),
+    
       body: StreamBuilder<QuerySnapshot>(
         
         stream: users.snapshots(),

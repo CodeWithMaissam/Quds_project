@@ -16,12 +16,15 @@ class AddCash extends StatefulWidget {
 }
 
 class _AddCashState extends State<AddCash> {
+  final TextEditingController _resourceController = TextEditingController();
   final TextEditingController _amountController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   void _handleConfirm() {
 
+    final String resourse = _resourceController.text;
     final String input = _amountController.text;
+
     final double? enteredAmount = double.tryParse(input);
 
     if (enteredAmount != null && enteredAmount > 0) {
@@ -31,7 +34,7 @@ class _AddCashState extends State<AddCash> {
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("RS: ${enteredAmount.toStringAsFixed(2)} added to wallet"),
+          content: Text("RS: ${enteredAmount.toStringAsFixed(2)} from ${_resourceController.text} added to wallet"),
           backgroundColor: Colors.green,
           behavior: SnackBarBehavior.floating,
         ),
@@ -81,8 +84,32 @@ class _AddCashState extends State<AddCash> {
               style: TextStyle(color: Colors.grey),
             ),
             const SizedBox(height: 32),
+
+
+            TextField(
+              controller: _resourceController,
+              autofocus: true,
+              
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              decoration: InputDecoration(
+                labelText: "Resource",
+                hintText: "Enter the Resource",
+                filled: true,
+                fillColor: Colors.grey[100],
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide.none,
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(color: Colors.green, width: 2),
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 32),
             
-            // Input Field
+            
             TextField(
               controller: _amountController,
               autofocus: true,
@@ -131,9 +158,11 @@ class _AddCashState extends State<AddCash> {
                 ),
               ),
             ),
+            
           ],
         ),
       ),
+      
     );
   }
 }

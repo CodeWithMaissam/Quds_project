@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  // Sign Up C:\Users\Zuraiz\StudioProjects\demo_firebase_app\auth.dart
   Future<UserCredential?> registerWithEmail(String email,
       String password) async {
     try {

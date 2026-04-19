@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class Firestore extends StatefulWidget {
+  const Firestore({super.key});
   @override
   State<StatefulWidget> createState() => _HomePageState();
 

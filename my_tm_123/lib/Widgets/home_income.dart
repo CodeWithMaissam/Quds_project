@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_tm_123/add&removepage/add_cash.dart';
-import 'package:my_tm_123/add&removepage/remove.dart';
+
+
+// import 'package:my_tm_123/category/add_cash.dart';
 
 class HomeIncome extends StatefulWidget {
   const HomeIncome({super.key});
@@ -83,7 +84,7 @@ class _HomeIncomeState extends State<HomeIncome> {
                   crossAxisAlignment: .end,
                   children: [
                     ElevatedButton(onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => RemoveCash()));
+                      // Navigator.push(context, MaterialPageRoute(builder: (context) => RemoveCash()));
                       
                     }, child: Text(
                       "Add New Expense"
@@ -91,7 +92,7 @@ class _HomeIncomeState extends State<HomeIncome> {
                   ),
                   SizedBox(height: 10),
                   ElevatedButton(onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => AddCash()));
+                    // Navigator.push(context, MaterialPageRoute(builder: (context) => AddCash()));
                       
                     }, child: Text(
                       "Add Cash"

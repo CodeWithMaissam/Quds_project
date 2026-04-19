@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:my_tm_123/Screens/profile.dart';
 
-import 'package:my_tm_123/auth/firestore.dart';
+
 import 'package:my_tm_123/category/add_cash.dart';
-import 'package:my_tm_123/category/remove_cash.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class Profile extends StatefulWidget {
+  const Profile({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<Profile> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
-  double _currentBalance = 0.00; 
+class _HomePageState extends State<Profile> {
+  
+  double _currentBalance = 50000.0; 
 
   void _updateBalance(double amount) {
     setState(() {
@@ -22,11 +20,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  void _navigateBottomNavBar(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -36,28 +30,16 @@ class _HomePageState extends State<HomePage> {
         balance: _currentBalance, 
         onBalanceChanged: _updateBalance,
       ),
-       Firestore(),
-       Profile(),
+      
+      
       
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Personal Budget Tracker'),
-        backgroundColor: Colors.blue,
-        centerTitle: true,
-      ),
-      body: _children[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: _navigateBottomNavBar,
-        type: BottomNavigationBarType.fixed,
-        items:  [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.category), label: 'Category'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-        ],
-      ),
+      body: DashboardView(balance: 50, onBalanceChanged: (double p1) {  },),
+      
+       
+    
     );
   }
 }
@@ -117,10 +99,7 @@ class DashboardView extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) =>  RemoveCash(onSub: (amount) { 
-                        onBalanceChanged(amount);
-
-                       },)));
+                      // Navigator.push(context, MaterialPageRoute(builder: (context) =>  RemoveCash()));
                     },
                     child:  Text("Add New Expense"),
                   ),

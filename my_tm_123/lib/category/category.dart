@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_tm_123/category/add_category.dart';
+import 'package:my_tm_123/category/add_cash.dart';
 
 class Category extends StatefulWidget {
   const Category({super.key});
@@ -27,7 +27,7 @@ class _CategoryState extends State<Category> {
             mainAxisAlignment: .end,
             children: [
               FloatingActionButton(onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> AddCategory()));
+                // Navigator.push(context, MaterialPageRoute(builder: (context)=> AddCash()));
               },
               child: Icon(
                 // CupertinoIcons.plus,
